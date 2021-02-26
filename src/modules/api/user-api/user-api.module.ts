@@ -4,6 +4,6 @@ import { UserApiService } from './user-api.service';
 
 @Module({
   controllers: [UserApiController],
-  providers: [UserApiService]
+  providers: [UserApiService],
 })
 export class UserApiModule {}

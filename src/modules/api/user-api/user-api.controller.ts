@@ -7,11 +7,10 @@ import { UserApiService } from './user-api.service';
 @Controller('user-api')
 @UseGuards(AuthGuard)
 export class UserApiController {
-    
-    constructor(private userApiService: UserApiService){}
+  constructor(private userApiService: UserApiService) {}
 
-    @Get('/profile')
-    getProfile(@GetUser() user:User){
-        return user;
-    }
+  @Get('/profile')
+  getProfile(@GetUser() user: User) {
+    return user;
+  }
 }

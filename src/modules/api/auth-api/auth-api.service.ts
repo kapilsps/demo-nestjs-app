@@ -9,42 +9,40 @@ import { UserRepository } from 'src/repositories/user.repository';
 
 @Injectable()
 export class AuthApiService {
-    
-    
-    constructor(@InjectRepository(UserRepository) private userRepository: UserRepository, private jwtService: JwtService){}
-    
-    /**
-     * Register the user
-     * @param data 
-     */
-    async register(data: RegisterDto): Promise<User>{
-        return await this.userRepository.createUser(data);
+  constructor(
+    @InjectRepository(UserRepository) private userRepository: UserRepository,
+    private jwtService: JwtService,
+  ) {}
+
+  /**
+   * Register the user
+   * @param data
+   */
+  async register(data: RegisterDto): Promise<User> {
+    return await this.userRepository.createUser(data);
+  }
+
+  /**
+   * Login the user
+   * @param data
+   */
+  async login(data: LoginDto): Promise<LoginSuccess> {
+    const user = await this.userRepository.findUser(data);
+
+    if (!user) {
+      throw new UnauthorizedException('Invalid credentials.');
     }
 
+    const payload = { email: user.email };
+    const access_token = this.jwtService.sign(payload);
+    return {
+      message: 'Login successfully',
+      access_token,
+    };
+  }
 
-    /**
-     * Login the user
-     * @param data 
-     */
-    async login(data: LoginDto): Promise<LoginSuccess>{
-        const user = await this.userRepository.findUser(data);
-
-        if(!user){
-            throw new UnauthorizedException('Invalid credentials.');
-        }
-
-        const payload = { email:user.email };
-        const access_token = this.jwtService.sign(payload);
-        return {
-            message: 'Login successfully',
-            access_token
-        };
-    }
-    
-    /**
-     * Logout the user
-     */
-    logout(){
-        
-    }
+  /**
+   * Logout the user
+   */
+  logout() {}
 }

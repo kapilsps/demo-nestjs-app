@@ -8,26 +8,27 @@ import { TaskRepository } from 'src/repositories/task.repository';
 
 @Injectable()
 export class TaskApiService {
+  constructor(
+    @InjectRepository(TaskRepository) private taskRepository: TaskRepository,
+  ) {}
 
-    constructor(@InjectRepository(TaskRepository) private taskRepository: TaskRepository){}
+  async findAll(user: User): Promise<Task[]> {
+    return await this.taskRepository.getAllTask(user);
+  }
 
-    async findAll(user: User): Promise<Task[]>{
-        return await this.taskRepository.getAllTask(user);
-    }
+  async findOne(id: number, user: User): Promise<Task> {
+    return await this.taskRepository.getTask(id, user);
+  }
 
-    async findOne(id: number, user: User): Promise<Task>{
-        return await this.taskRepository.getTask(id, user);
-    }
+  async create(body: CreateTaskDto, user: User): Promise<Task> {
+    return await this.taskRepository.createTask(body, user);
+  }
 
-    async create(body: CreateTaskDto, user: User): Promise<Task>{
-        return await this.taskRepository.createTask(body, user);
-    }
+  async update(id: number, body: UpdateTaskDto, user: User): Promise<Task> {
+    return await this.taskRepository.updateTask(id, body, user);
+  }
 
-    async update(id: number, body: UpdateTaskDto, user: User): Promise<Task>{
-        return await this.taskRepository.updateTask(id, body, user);
-    }
-
-    async delete(id: number, user: User): Promise<void | { message: string }>{
-        return await this.taskRepository.deleteTask(id, user);
-    }
+  async delete(id: number, user: User): Promise<void | { message: string }> {
+    return await this.taskRepository.deleteTask(id, user);
+  }
 }

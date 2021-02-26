@@ -1,7 +1,7 @@
-import { TypeOrmModuleOptions } from "@nestjs/typeorm";
-import { join } from "path";
-import { Task } from "src/db/entities/task.entity";
-import { User } from "src/db/entities/user.entity";
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { join } from 'path';
+import { Task } from 'src/db/entities/task.entity';
+import { User } from 'src/db/entities/user.entity';
 
 // const baseDir = join(__dirname, '../');
 // const entitiesPath = `${baseDir}${process.env.TYPEORM_ENTITIES}`;
@@ -9,12 +9,12 @@ import { User } from "src/db/entities/user.entity";
 // const dbType = process.env.TYPEORM_TYPE || 'mysql';
 // console.log('username', process.env.TYPEORM_USERNAME);
 export const typeOrmConfig: TypeOrmModuleOptions = {
-    type: 'mysql',
-    host: 'localhost',
-    username: 'root',
-    password: 'root',
-    database: 'mvc_nest_js',
-    port: 3306,
-    entities: [User, Task],
-    synchronize:true
-}
+  type: 'mysql',
+  host: 'localhost',
+  username: 'root',
+  password: 'root',
+  database: 'mvc_nest_js',
+  port: 3306,
+  entities: [User, Task],
+  synchronize: true,
+};

@@ -10,7 +10,14 @@ import { TaskApiModule } from './modules/api/task-api/task-api.module';
 import { UserApiModule } from './modules/api/user-api/user-api.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(typeOrmConfig), AuthModule, UserModule, AuthApiModule, TaskApiModule, UserApiModule],
+  imports: [
+    TypeOrmModule.forRoot(typeOrmConfig),
+    AuthModule,
+    UserModule,
+    AuthApiModule,
+    TaskApiModule,
+    UserApiModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

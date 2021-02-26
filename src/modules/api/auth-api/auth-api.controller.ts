@@ -7,33 +7,31 @@ import { AuthApiService } from './auth-api.service';
 
 @Controller('auth-api')
 export class AuthApiController {
+  constructor(private authApiService: AuthApiService) {}
 
-    constructor(private authApiService: AuthApiService){}
-    
-    /**
-     * Register the user
-     * @param body 
-     */
-    @Post('/register')
-    async register(@Body(ValidationPipe) body: RegisterDto): Promise<User>{
-        return await this.authApiService.register(body);
-    }
+  /**
+   * Register the user
+   * @param body
+   */
+  @Post('/register')
+  async register(@Body(ValidationPipe) body: RegisterDto): Promise<User> {
+    return await this.authApiService.register(body);
+  }
 
+  /**
+   * Login the user
+   * @param body
+   */
+  @Post('/login')
+  async login(@Body(ValidationPipe) body: LoginDto): Promise<LoginSuccess> {
+    return await this.authApiService.login(body);
+  }
 
-    /**
-     * Login the user
-     * @param body 
-     */
-    @Post('/login')
-    async login(@Body(ValidationPipe) body: LoginDto): Promise<LoginSuccess>{
-        return await this.authApiService.login(body);
-    }
-    
-    /**
-     * Logout the user
-     */
-    @Get('/logout')
-    logout(){
-        return this.authApiService.logout();
-    }
+  /**
+   * Logout the user
+   */
+  @Get('/logout')
+  logout() {
+    return this.authApiService.logout();
+  }
 }

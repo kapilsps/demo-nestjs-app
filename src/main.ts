@@ -9,8 +9,11 @@ async function bootstrap() {
   const PORT = process.env.HTTP_PORT || 3000;
 
   app.use(expressLayout);
-  app.set("layout extractScripts", true)
-  app.set('layout', join(__dirname, '..', 'views', 'layouts', 'app-layout.ejs'));
+  app.set('layout extractScripts', true);
+  app.set(
+    'layout',
+    join(__dirname, '..', 'views', 'layouts', 'app-layout.ejs'),
+  );
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.useStaticAssets(join(__dirname, '..', 'node_modules', '@fortawesome'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));

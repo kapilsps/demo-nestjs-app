@@ -10,14 +10,18 @@ import { AuthApiService } from './auth-api.service';
 @Module({
   controllers: [AuthApiController],
   providers: [AuthApiService, JwtStrategy],
-  imports:[TypeOrmModule.forFeature([UserRepository]), JwtModule.register({
-    secret:'its is top secret',
-    signOptions:{
-      expiresIn:3600
-    }
-  }), PassportModule.register({
-    defaultStrategy: 'jwt'
-  })],
-  exports:[JwtStrategy, PassportModule]
+  imports: [
+    TypeOrmModule.forFeature([UserRepository]),
+    JwtModule.register({
+      secret: 'its is top secret',
+      signOptions: {
+        expiresIn: 3600,
+      },
+    }),
+    PassportModule.register({
+      defaultStrategy: 'jwt',
+    }),
+  ],
+  exports: [JwtStrategy, PassportModule],
 })
 export class AuthApiModule {}

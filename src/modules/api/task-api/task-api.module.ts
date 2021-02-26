@@ -8,6 +8,6 @@ import { TaskApiService } from './task-api.service';
 @Module({
   controllers: [TaskApiController],
   providers: [TaskApiService],
-  imports:[TypeOrmModule.forFeature([TaskRepository]), AuthApiModule]
+  imports: [TypeOrmModule.forFeature([TaskRepository]), AuthApiModule],
 })
 export class TaskApiModule {}

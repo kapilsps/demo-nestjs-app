@@ -1,4 +1,4 @@
-export interface LoginSuccess{
-    message: string;
-    access_token: string;
+export interface LoginSuccess {
+  message: string;
+  access_token: string;
 }
