@@ -21,7 +21,7 @@ import { TaskApiService } from './task-api.service';
 @Controller('task-api')
 @UseGuards(AuthGuard())
 export class TaskApiController {
-  constructor(private taskApiService: TaskApiService) {}
+  constructor(private readonly taskApiService: TaskApiService) {}
 
   @Get()
   async findAll(@GetUser() user: User): Promise<Task[]> {

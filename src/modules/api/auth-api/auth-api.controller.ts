@@ -7,7 +7,7 @@ import { AuthApiService } from './auth-api.service';
 
 @Controller('auth-api')
 export class AuthApiController {
-  constructor(private authApiService: AuthApiService) {}
+  constructor(private readonly authApiService: AuthApiService) {}
 
   /**
    * Register the user

@@ -5,9 +5,9 @@ import { GetUser } from 'src/decorators/get-user.decorator';
 import { UserApiService } from './user-api.service';
 
 @Controller('user-api')
-@UseGuards(AuthGuard)
+@UseGuards(AuthGuard())
 export class UserApiController {
-  constructor(private userApiService: UserApiService) {}
+  constructor(private readonly userApiService: UserApiService) {}
 
   @Get('/profile')
   getProfile(@GetUser() user: User) {
