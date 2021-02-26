@@ -9,11 +9,9 @@
     <!-- fontawesome -->
     <link rel="stylesheet" href="/fontawesome-free/css/all.min.css">
     <!-- datatables  -->
-    <link rel="stylesheet" href="/datatables/css/dataTables.bootstrap4.css">
     <!-- adminlte theme -->
-    <link rel="stylesheet" href="/plugins/adminlte/css/adminlte.min.css">
+    <link rel="stylesheet" href="/plugins/adminlte/dist/css/adminlte.min.css">
     <!-- custom style sheet -->
-    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body class="">
     <div class="wrapper">
@@ -21,7 +19,6 @@
         <%- include('../partials/side-bar'); %>
         <div class="content-wrapper">
             <section class="content-header">
-                <%- include('../partials/flash_messages'); %>
             </section>
             <section class="content">
                 <%- body %>
@@ -36,10 +33,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- datatables -->
-<script src="/datatables/js/jquery.dataTables.js"></script>
-<script src="/datatables/js/dataTables.bootstrap4.js"></script>
 <!-- admin lte -->
-<script src="/plugins/adminlte/js/adminlte.min.js"></script>
-<%- script %>
+<script src="/plugins/adminlte/dist/js/adminlte.min.js"></script>
 </body>
 </html>

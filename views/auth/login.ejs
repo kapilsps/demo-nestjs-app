@@ -6,7 +6,6 @@
       </div>
       <div class="card-body">
         <p class="login-box-msg">Sign in to start your session</p>
-        <%- include('../partials/flash_messages'); %>
         <form action="/login" method="post">
           <div class="input-group mb-3">
             <input type="email" class="form-control <%= (typeof emailErrMsg !== 'undefined') ? 'is-invalid' : '' %>" name="email" placeholder="Email" value="<%= (typeof emailErrVal !== 'undefined') ? emailErrVal : '' %>">

@@ -1,7 +1,9 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import * as bcrypt from 'bcrypt';
+import { Task } from "./task.entity";
 
 @Entity('users')
-export class UserEntity extends BaseEntity{
+export class User extends BaseEntity{
     @PrimaryGeneratedColumn({
         type:'bigint',
         unsigned:true
@@ -20,8 +22,15 @@ export class UserEntity extends BaseEntity{
     password: string;
 
     @CreateDateColumn()
-    created_at: Date;
+    createdAt: Date;
 
     @UpdateDateColumn()
-    updated_at: Date;
+    updatedAt: Date;
+
+    @OneToMany(() => Task, (task) => task.user, {eager:true})
+    task: Task[]
+
+    async validatePassword(password: string): Promise<boolean>{
+        return await bcrypt.compare(password, this.password);
+    }
 }

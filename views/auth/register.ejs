@@ -5,7 +5,6 @@
       </div>
       <div class="card-body">
         <p class="login-box-msg">Register a new membership</p>
-        <%- include('../partials/flash_messages'); %>
         <form action="/register" method="post">
           <div class="input-group mb-3">
             <input type="text" class="form-control <%= (typeof usrErrMsg !== 'undefined') ? 'is-invalid' : '' %>"  name="username" placeholder="Full name" value="<%= (typeof usrErrVal !== 'undefined') ? usrErrVal : '' %>">

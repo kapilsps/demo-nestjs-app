@@ -1,6 +1,7 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
 import { join } from "path";
-import { UserEntity } from "src/db/entities/user.entity";
+import { Task } from "src/db/entities/task.entity";
+import { User } from "src/db/entities/user.entity";
 
 // const baseDir = join(__dirname, '../');
 // const entitiesPath = `${baseDir}${process.env.TYPEORM_ENTITIES}`;
@@ -14,6 +15,6 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
     password: 'root',
     database: 'mvc_nest_js',
     port: 3306,
-    entities: [UserEntity],
+    entities: [User, Task],
     synchronize:true
 }
