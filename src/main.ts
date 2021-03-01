@@ -3,6 +3,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import { AppModule } from './app.module';
 import * as expressLayout from 'express-ejs-layouts';
+import { ValidationInterceptor } from './interceptors/validation.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -18,6 +19,7 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'node_modules', '@fortawesome'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('ejs');
+  // app.useGlobalInterceptors(ValidationInterceptor);
 
   console.log(`Listening on port ${PORT}`);
   await app.listen(PORT);

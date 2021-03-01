@@ -1,11 +1,13 @@
-import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseInterceptors, ValidationPipe } from '@nestjs/common';
 import { User } from 'src/db/entities/user.entity';
 import { LoginDto } from 'src/dtos/auth/login.dto';
 import { RegisterDto } from 'src/dtos/auth/register.dto';
+import { ValidationInterceptor } from 'src/interceptors/validation.interceptor';
 import { LoginSuccess } from 'src/models/login-success.model';
 import { AuthApiService } from './auth-api.service';
 
 @Controller('auth-api')
+@UseInterceptors(ValidationInterceptor)
 export class AuthApiController {
   constructor(private readonly authApiService: AuthApiService) {}
 
