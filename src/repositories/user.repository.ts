@@ -58,4 +58,16 @@ export class UserRepository extends Repository<User> {
     }
     return;
   }
+
+  /**
+   * chacke email exists in database or not
+   * @param email 
+   */
+  async emailExists(email: string):Promise<boolean>{
+    const user = await this.createQueryBuilder('users').where('email = :emailId',{ emailId: email }).getOne();
+    if(user){
+      return false;
+    }
+    return true;
+  }
 }

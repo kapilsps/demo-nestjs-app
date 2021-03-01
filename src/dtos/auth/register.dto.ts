@@ -1,4 +1,5 @@
 import { IsEmail, IsString, Matches, MaxLength, MinLength } from 'class-validator';
+import { IsEmailAlreadyExists } from 'src/validation-rules/email-already-exists.validation';
 
 export class RegisterDto {
   @IsString()
@@ -7,6 +8,7 @@ export class RegisterDto {
   username: string;
 
   @IsEmail()
+  @IsEmailAlreadyExists()
   @MaxLength(200)
   @MinLength(2)
   email: string;
